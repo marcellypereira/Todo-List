@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { THEMES } from '../../THEMES';
+import { themes } from '../../themes';
 
 export const styles = StyleSheet.create({
   container: {
@@ -18,9 +18,9 @@ export const styles = StyleSheet.create({
 
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: THEMES.gray400,
+    borderColor: themes.gray400,
 
-    backgroundColor: THEMES.gray500,
+    backgroundColor: themes.gray500,
   },
   textContainer: {
     width: '80%',
@@ -32,13 +32,13 @@ export const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   textCreated: {
-    fontSize: THEMES.md,
-    color: THEMES.gray100,
+    fontSize: themes.md,
+    color: themes.gray100,
     textDecorationLine: 'none',
   },
   textDone: {
-    fontSize: THEMES.md,
-    color: THEMES.gray300,
+    fontSize: themes.md,
+    color: themes.gray300,
     textDecorationLine: 'line-through',
   },
   circleCheck: {
@@ -50,9 +50,9 @@ export const styles = StyleSheet.create({
 
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: THEMES.purple,
+    borderColor: themes.purple,
 
-    backgroundColor: THEMES.purple,
+    backgroundColor: themes.purple,
   },
   circleEmpty: {
     width: 20,
@@ -60,6 +60,6 @@ export const styles = StyleSheet.create({
 
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: THEMES.blue,
+    borderColor: themes.blue,
   },
 });

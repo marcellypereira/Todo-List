@@ -1,15 +1,13 @@
 import { StyleSheet } from 'react-native';
-
-import { THEMES } from '../../THEMES';
+import { themes } from '../../themes';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: THEMES.gray600,
+    backgroundColor: themes.gray600,
   },
   tasksContainer: {
     flex: 1,
-
     marginTop: 55,
     marginHorizontal: 24,
   },
@@ -17,7 +15,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-
     marginBottom: 20,
   },
   row: {
@@ -25,34 +22,27 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tasksCreated: {
-    color: THEMES.blue,
-
-    fontSize: THEMES.md,
-    fontFamily: THEMES.bold,
+    color: themes.blue,
+    fontSize: themes.md,
+    fontFamily: themes.bold,
   },
   tasksDone: {
-    color: THEMES.purple,
-
-    fontSize: THEMES.md,
-    fontFamily: THEMES.bold,
+    color: themes.purple,
+    fontSize: themes.md,
+    fontFamily: themes.bold,
   },
   counterContainer: {
     width: 25,
     height: 19,
-
     alignItems: 'center',
     justifyContent: 'center',
-
     marginLeft: 8,
-
     borderRadius: 999,
-
-    backgroundColor: THEMES.gray400,
+    backgroundColor: themes.gray400,
   },
   counterTasks: {
-    fontSize: THEMES.sm,
-    fontFamily: THEMES.bold,
-
-    color: THEMES.gray200,
+    fontSize: themes.sm,
+    fontFamily: themes.bold,
+    color: themes.gray200,
   },
 });

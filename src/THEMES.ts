@@ -1,4 +1,4 @@
-export const THEMES = {
+export const themes = {
     // Base
     gray700: '#0D0D0D',
     gray600: '#1A1A1A',

@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import { TextInput, TouchableOpacity, View } from 'react-native';
-
 import { styles } from './styles';
-
-import { THEMES } from '../../THEMES';
-
+import { themes } from '../../themes';
 import Logo from '../../assets/todo.svg';
 import PlusIcon from '../../assets/plus.svg';
 
@@ -31,7 +28,7 @@ export function Header({task, onChangeText, onPress}: HeaderProps) {
 
       <View style={styles.form}>
         <TextInput 
-          style={[styles.input, { borderColor: isFocused ? THEMES.purple : THEMES.gray700 }]}
+          style={[styles.input, { borderColor: isFocused ? themes.purple : themes.gray700 }]}
           placeholder='Adicione aqui uma nova tarefa'
           placeholderTextColor='#4F4F4F'
           onFocus={handleFocus}

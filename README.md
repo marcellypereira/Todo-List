@@ -1,5 +1,5 @@
 <p align="center">
-  <h3 align="center">Todo-List</h3>
+  <h3 align="center">To Do List</h3>
 
  <div align="center">
   <table>
@@ -18,28 +18,29 @@
   </p>
 </p>
 
-## :book: Sobre o projeto
+### 📖 Sobre o projeto
 
-### :art: Layout
+O teste consiste em desenvolver um aplicativo mobile de todo list, onde o usuário pode adicionar, editar, marcar como concluído e excluir uma tarefa. 
+
+### 🎨 Layout
 
 Você pode acessar o layout do projeto no link abaixo:
 
-* [Layout](https://www.figma.com/file/0n0zDN7zbzhRbaEO74Xesx/ToDo-List-%E2%80%A2-Desafio-React?type=design&node-id=0-1&mode=design&t=p5u9dqXWEQLnoUD7-0)
-* Você precisa ter uma conta no [Figma](https://www.figma.com) para acessar o layout.
+* [Layout](https://www.figma.com/file/LpFdANkcqPnPnT0aQtgP96/ToDo-List-%E2%80%A2-Desafio-React-Native?type=design&node-id=0%3A1&mode=design&t=apnIEzs5FXwY0U7Q-1)
 
+🚨 Você precisa ter uma conta no [Figma](https://www.figma.com) para acessar o layout.
 
-O teste consiste em desenvolver um aplicativo mobile de todo list, onde o usuário pode adicionar, editar, marcar como concluído e excluir uma tarefa. 
-### :computer: Tecnologias
+### 💻 Tecnologias
 
 * [TypeScript](https://www.typescriptlang.org/)
 * [Node.js](https://nodejs.org/en/)
 * [React Native](https://reactnative.dev/)
 * [Expo](https://docs.expo.dev/get-started/installation/)
 
-### :construction: Requisitos
+### 🚧 Requisitos
 - Qualquer sistema operacional com [Expo](https://docs.expo.dev/get-started/installation/) instalado.
 
-## :bricks: Instalação
+## 🧱 Instalação
 
 Este projeto utiliza [Node.js](https://nodejs.org/en/) e [Npm](https://www.npmjs.com/), você precisará deles para construir suas dependências.
 
@@ -49,10 +50,10 @@ Este projeto utiliza [Node.js](https://nodejs.org/en/) e [Npm](https://www.npmjs
 * Se você não tem o git na sua máquina, você pode instalá-lo [aqui](https://git-scm.com/downloads).
 ```bash
 
-$ git clone https://github.com/marcellypereira/Todo-List.git
+$ git clone https://github.com/pierguinzani/todo-list.git
 
-# Entre na pasta `TODO-LIST`:
-$ cd TODO-LIST
+# Entre na pasta `todo-list`:
+$ cd todo-list
 
 # Rode o projeto
 $ npx expo start
@@ -63,4 +64,4 @@ $ npx expo start
 
 
 
-<p align="center">Desenvolvido por Marcelly Pereira 💜</p>
+<p align="center">Desenvolvido por Pier Guinzani 💜</p>
