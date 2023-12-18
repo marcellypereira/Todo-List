@@ -44,20 +44,18 @@ O teste consiste em desenvolver um aplicativo mobile de todo list, onde o usuár
 Este projeto utiliza [Node.js](https://nodejs.org/en/) e [Npm](https://www.npmjs.com/), você precisará deles para construir suas dependências.
 
 
-Clonar este repositório do projeto:
+🚨 Clonar este repositório do projeto:
 
-
-🚨 Se você não tem o git na sua máquina, você pode instalá-lo [aqui](https://git-scm.com/downloads).
+* Se você não tem o git na sua máquina, você pode instalá-lo [aqui](https://git-scm.com/downloads).
 ```bash
 
 $ git clone https://github.com/marcellypereira/Todo-List.git
 
 # Entre na pasta `TODO-LIST`:
-
 $ cd TODO-LIST
 
 # Rode o projeto
-npx expo start
+$ npx expo start
 
 # Em seguida, abra o emulador ou conecte seu dispositivo e rode o projeto.
 ```
