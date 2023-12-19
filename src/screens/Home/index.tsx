@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableWithoutFeedback, Keyboard, FlatList, Alert } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Empty } from "../../components/Empty";
 import { Header } from "../../components/Header";
 import { Task, TaskProps } from "../../components/Task";
@@ -7,15 +8,34 @@ import { uuidv4, handleBlurWithKeyboard } from "../../utils";
 import { styles } from "./styles";
 import Filter from '../../assets/filter.svg';
 
+const STORAGE_KEY = 'tasks';
+
 export function Home() {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [newTask, setNewTask] = useState('');
   const [filterCompleted, setFilterCompleted] = useState(false);
   const [completedTasksOpacity, setCompletedTasksOpacity] = useState(1);
 
+  useEffect(() => {
+    const loadTasks = async () => {
+      try {
+        const storedTasks = await AsyncStorage.getItem(STORAGE_KEY);
+        if (storedTasks) {
+          setTasks(JSON.parse(storedTasks));
+        }
+      } catch (error) {
+        console.error('Error loading tasks from AsyncStorage:', error);
+      }
+    };
+
+    loadTasks();
+  }, []);
+
   function handleTaskAdd() {
     if (newTask !== '' && newTask.length >= 5) {
-      setTasks((task) => [{ id: uuidv4(), title: newTask, isCompleted: false }, ...task]);
+      const newTaskItem = { id: uuidv4(), title: newTask, isCompleted: false };
+      setTasks((prevTasks) => [newTaskItem, ...prevTasks]);
+      saveTasksToStorage([newTaskItem, ...tasks]);
     } else {
       Alert.alert("Ops!", "A tarefa deve ter pelo menos 5 caracteres.");
     }
@@ -26,7 +46,10 @@ export function Home() {
     Alert.alert("Remover Tarefa", "Tem certeza que você deseja remover essa tarefa?", [
       {
         text: 'Sim',
-        onPress: () => setTasks((prevState) => prevState.filter((task) => task.id !== id)),
+        onPress: () => {
+          setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+          saveTasksToStorage(tasks.filter((task) => task.id !== id));
+        },
         style: 'destructive',
       },
       {
@@ -37,15 +60,21 @@ export function Home() {
   }
 
   function handleTaskDone(id: string) {
-    setTasks((prevState) =>
-      prevState.map((task) =>
-        task.id === id ? {
-          ...task,
-          isCompleted: !task.isCompleted,
-        } : task
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       )
     );
+    saveTasksToStorage(tasks);
   }
+
+  const saveTasksToStorage = async (tasksToSave: TaskProps[]) => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(tasksToSave));
+    } catch (error) {
+      console.error('Error saving tasks to AsyncStorage:', error);
+    }
+  };
 
   const filteredTasks = filterCompleted ? tasks.filter((task) => task.isCompleted) : tasks;
   const tasksCreated = tasks.length;
@@ -90,12 +119,12 @@ export function Home() {
           </View>
         </View>
         <Filter
-            style={styles.filterIcon}
-            onPress={() => {
-              setFilterCompleted(!filterCompleted);
-              setCompletedTasksOpacity(filterCompleted ? 1 : 0.5); 
-            }}
-          />
+          style={styles.filterIcon}
+          onPress={() => {
+            setFilterCompleted(!filterCompleted);
+            setCompletedTasksOpacity(filterCompleted ? 1 : 0.5); 
+          }}
+        />
       </View>
     </TouchableWithoutFeedback>
   );
