@@ -11,6 +11,7 @@ export function Home() {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [newTask, setNewTask] = useState('');
   const [filterCompleted, setFilterCompleted] = useState(false);
+  const [completedTasksOpacity, setCompletedTasksOpacity] = useState(1);
 
   function handleTaskAdd() {
     if (newTask !== '' && newTask.length >= 5) {
@@ -71,26 +72,30 @@ export function Home() {
             </View>
           </View>
 
-          <FlatList
-            data={filteredTasks}
-            keyExtractor={(task) => task.id!}
-            renderItem={({ item }) => (
-              <Task
-                key={item.id}
-                isCompleted={item.isCompleted}
-                title={item.title}
-                onRemove={() => handleRemoveTask(item.id!)}
-                onTaskCheck={() => handleTaskDone(item.id!)}
-              />
-            )}
-            ListEmptyComponent={<Empty />}
-          />
-
-          <Filter
-            style={styles.filterIcon}
-            onPress={() => setFilterCompleted(!filterCompleted)}
-          />
+          <View style={{ opacity: completedTasksOpacity }}>
+            <FlatList
+              data={filteredTasks}
+              keyExtractor={(task) => task.id!}
+              renderItem={({ item }) => (
+                <Task
+                  key={item.id}
+                  isCompleted={item.isCompleted}
+                  title={item.title}
+                  onRemove={() => handleRemoveTask(item.id!)}
+                  onTaskCheck={() => handleTaskDone(item.id!)}
+                />
+              )}
+              ListEmptyComponent={<Empty />}
+            />
+          </View>
         </View>
+        <Filter
+            style={styles.filterIcon}
+            onPress={() => {
+              setFilterCompleted(!filterCompleted);
+              setCompletedTasksOpacity(filterCompleted ? 1 : 0.5); 
+            }}
+          />
       </View>
     </TouchableWithoutFeedback>
   );

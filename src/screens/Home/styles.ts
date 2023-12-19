@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
   filterIcon:{
     fill: themes.purpleDark,
     marginBottom: 20, 
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    marginRight: 20
   }
 });
