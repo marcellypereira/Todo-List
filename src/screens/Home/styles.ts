@@ -45,4 +45,9 @@ export const styles = StyleSheet.create({
     fontFamily: themes.bold,
     color: themes.gray200,
   },
+  filterIcon:{
+    fill: themes.purpleDark,
+    marginBottom: 20, 
+    marginLeft: 'auto'
+  }
 });
