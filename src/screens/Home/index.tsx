@@ -14,7 +14,6 @@ export function Home() {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [newTask, setNewTask] = useState('');
   const [filterCompleted, setFilterCompleted] = useState(false);
-  const [completedTasksOpacity, setCompletedTasksOpacity] = useState(1);
 
   useEffect(() => {
     const loadTasks = async () => {
@@ -101,7 +100,7 @@ export function Home() {
             </View>
           </View>
 
-          <View style={{ opacity: completedTasksOpacity }}>
+          <View style={{ opacity: filteredTasks.length > 0 ? 1 : 0.5 }}>
             <FlatList
               data={filteredTasks}
               keyExtractor={(task) => task.id!}
@@ -119,10 +118,12 @@ export function Home() {
           </View>
         </View>
         <Filter
-          style={styles.filterIcon}
+          style={[styles.filterIcon, { opacity: tasks.some(task => task.isCompleted) ? 1 : 0.5 }]}
           onPress={() => {
-            setFilterCompleted(!filterCompleted);
-            setCompletedTasksOpacity(filterCompleted ? 1 : 0.5); 
+            if (tasks.some(task => task.isCompleted)) {
+              setFilterCompleted(!filterCompleted);
+            }
+            // Não é necessário ajustar a opacidade aqui, pois isso será feito no estilo do componente diretamente
           }}
         />
       </View>
