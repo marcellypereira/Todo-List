@@ -31,12 +31,58 @@ export const styles = StyleSheet.create({
     fontSize: themes.md,
     fontFamily: themes.bold,
   },
-  counterContainer: {
-    width: 25,
-    height: 19,
+  button: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 8,
+    borderWidth: 2,
+    borderRadius: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    width: 175,
+    height: 45
+  },
+  buttonText: {
+    fontSize: themes.md,
+    fontFamily: themes.bold,
+  },
+  buttonBlue: {
+    borderColor: themes.blue,
+  },
+  buttonPurple: {
+    borderColor: themes.purple,
+  },
+  buttonBlueDark: {
+    borderColor: themes.blueDark,
+  },
+  buttonPurpleDark: {
+    borderColor: themes.purpleDark,
+  },
+  buttonTextBlue: {
+    color: themes.blue,
+  },
+  buttonTextPurple: {
+    color: themes.purple,
+  },
+  buttonTextBlueDark: {
+    color: themes.blueDark,
+  },
+  buttonTextPurpleDark: {
+    color: themes.purpleDark,
+  },
+  containerAllTasks:{
+    flexDirection: 'row', 
+    gap: 10
+  },
+  allTasks:{
+    fontFamily: themes.bold,
+    color: themes.blue,
+    marginBottom: 20,
+  },
+  counterContainer: {
+    width: 25,
+    height: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 999,
     backgroundColor: themes.gray400,
   },
@@ -44,11 +90,6 @@ export const styles = StyleSheet.create({
     fontSize: themes.sm,
     fontFamily: themes.bold,
     color: themes.gray200,
+    textAlign: 'center',
   },
-  filterIcon:{
-    fill: themes.purpleDark,
-    marginBottom: 20, 
-    marginLeft: 'auto',
-    marginRight: 20
-  }
 });
