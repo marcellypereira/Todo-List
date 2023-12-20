@@ -46,8 +46,11 @@ export function Home() {
       {
         text: 'Sim',
         onPress: () => {
-          setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-          saveTasksToStorage(tasks.filter((task) => task.id !== id));
+          setTasks((prevTasks) => {
+            const updatedTasks = prevTasks.filter((task) => task.id !== id);
+            saveTasksToStorage(updatedTasks);
+            return updatedTasks;
+          });
         },
         style: 'destructive',
       },
@@ -64,7 +67,9 @@ export function Home() {
         task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       )
     );
-    saveTasksToStorage(tasks);
+
+    // Save updated tasks to storage
+    saveTasksToStorage(tasks.map((task) => (task.id === id ? { ...task, isCompleted: !task.isCompleted } : task)));
   }
 
   const saveTasksToStorage = async (tasksToSave: TaskProps[]) => {
@@ -123,7 +128,6 @@ export function Home() {
             if (tasks.some(task => task.isCompleted)) {
               setFilterCompleted(!filterCompleted);
             }
-            // Não é necessário ajustar a opacidade aqui, pois isso será feito no estilo do componente diretamente
           }}
         />
       </View>

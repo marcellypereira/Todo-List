@@ -51,7 +51,4 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: themes.blue,
   },
-  uploadedImage:{
-    
-  }
 });
