@@ -1,8 +1,9 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { styles } from './styles';
-import Check from '../../assets/check.svg'
-import TrashIcon from '../../assets/trash.svg'
+import Check from '../../assets/check.svg';
+import TrashIcon from '../../assets/trash.svg';
+import EditIcon from '../../assets/edit.svg';
 
 export type TaskProps = {
   id?: string;
@@ -10,9 +11,10 @@ export type TaskProps = {
   isCompleted: boolean;
   onRemove?: (id: string) => void;
   onTaskCheck?: () => void;
-}
+  onEdit?: (id: string) => void;
+};
 
-export function Task({ id, title, isCompleted, onRemove, onTaskCheck }: TaskProps) {
+export function Task({ id, title, isCompleted, onRemove, onTaskCheck, onEdit }: TaskProps) {
   return (
     <View style={styles.container}>
       <TouchableOpacity 
@@ -30,8 +32,14 @@ export function Task({ id, title, isCompleted, onRemove, onTaskCheck }: TaskProp
         </Text>
       </View>
 
+      {!isCompleted && ( 
+        <TouchableOpacity onPress={() => onEdit && onEdit(id as string)}>
+          <EditIcon style={styles.editIcon}/>
+        </TouchableOpacity>
+      )}
+
       <TouchableOpacity 
-        onPress={ () => onRemove && onRemove(id as string) }
+        onPress={() => onRemove && onRemove(id as string)}
       >
         <TrashIcon  />
       </TouchableOpacity>

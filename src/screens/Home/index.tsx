@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TouchableWithoutFeedback,
-  Keyboard,
   FlatList,
   Alert,
 } from "react-native";
@@ -20,6 +19,7 @@ export function Home() {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [newTask, setNewTask] = useState('');
   const [activeFilter, setActiveFilter] = useState('Criadas');
+  const [editingTask, setEditingTask] = useState<TaskProps | null>(null);
 
   useEffect(() => {
     const loadTasks = async () => {
@@ -77,6 +77,24 @@ export function Home() {
     saveTasksToStorage(tasks.map((task) => (task.id === id ? { ...task, isCompleted: !task.isCompleted } : task)));
   }
 
+  function handleEditTask(id: string) {
+    const taskToEdit = tasks.find((task) => task.id === id);
+    setEditingTask(taskToEdit || null);  
+    setNewTask(taskToEdit?.title || '');
+  }
+
+  function handleUpdateTask() {
+    if (editingTask) {
+      const updatedTasks = tasks.map((task) =>
+        task.id === editingTask.id ? { ...task, title: newTask } : task
+      );
+      setTasks(updatedTasks);
+      saveTasksToStorage(updatedTasks);
+      setEditingTask(null);
+      setNewTask('');
+    }
+  }
+
   const saveTasksToStorage = async (tasksToSave: TaskProps[]) => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(tasksToSave));
@@ -90,7 +108,7 @@ export function Home() {
   return (
     <TouchableWithoutFeedback onPress={handleBlurWithKeyboard}>
       <View style={styles.container}>
-        <Header task={newTask} onChangeText={setNewTask} onPress={handleTaskAdd} />
+      <Header task={newTask} onChangeText={setNewTask} onPress={editingTask ? handleUpdateTask : handleTaskAdd} />
         <View style={styles.tasksContainer}>
         <View style={styles.containerAllTasks}>
           <Text style={styles.allTasks}>
@@ -136,20 +154,21 @@ export function Home() {
           </View>
 
           <View style={{ opacity: filteredTasks.length > 0 ? 1 : 0.5 }}>
-            <FlatList
-              data={filteredTasks}
-              keyExtractor={(task) => task.id!}
-              renderItem={({ item }) => (
-                <Task
-                  key={item.id}
-                  isCompleted={item.isCompleted}
-                  title={item.title}
-                  onRemove={() => handleRemoveTask(item.id!)}
-                  onTaskCheck={() => handleTaskDone(item.id!)}
-                />
-              )}
-              ListEmptyComponent={<Empty />}
+          <FlatList
+          data={filteredTasks}
+          keyExtractor={(task) => task.id!}
+          renderItem={({ item }) => (
+            <Task
+              key={item.id}
+              isCompleted={item.isCompleted}
+              title={item.title}
+              onRemove={() => handleRemoveTask(item.id!)}
+              onTaskCheck={() => handleTaskDone(item.id!)}
+              onEdit={() => !item.isCompleted && handleEditTask(item.id!)} 
             />
+          )}
+          ListEmptyComponent={<Empty />}
+        />
           </View>
         </View>
       </View>

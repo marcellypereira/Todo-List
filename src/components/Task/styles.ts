@@ -51,4 +51,11 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: themes.blue,
   },
+  editIcon:{
+    fill: themes.purple,
+    width: 20,
+    height: 20,
+    marginRight: 5,
+    marginLeft: -10
+  }
 });
