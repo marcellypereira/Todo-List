@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 import { themes } from '../../themes';
 import Logo from '../../assets/todo.svg';
 import PlusIcon from '../../assets/plus.svg';
+import Upload from '../Upload';
 
-interface HeaderProps { 
+interface HeaderProps {
   task: string;
   onChangeText: (text: string) => void;
   onPress: () => void;
 }
 
-export function Header({task, onChangeText, onPress}: HeaderProps) {
+export function Header({ task, onChangeText, onPress }: HeaderProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   function handleFocus() {
@@ -27,16 +28,16 @@ export function Header({task, onChangeText, onPress}: HeaderProps) {
       <Logo />
 
       <View style={styles.form}>
-        <TextInput 
+        <TextInput
           style={[styles.input, { borderColor: isFocused ? themes.purple : themes.gray700 }]}
-          placeholder='Adicione aqui uma nova tarefa'
-          placeholderTextColor='#4F4F4F'
+          placeholder="Adicione aqui uma nova tarefa"
+          placeholderTextColor="#4F4F4F"
           onFocus={handleFocus}
           onBlur={handleBlur}
           value={task}
           onChangeText={onChangeText}
         />
-
+        <Upload />
         <TouchableOpacity
           style={styles.buttonInput}
           onPress={onPress}
