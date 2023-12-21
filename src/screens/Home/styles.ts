@@ -14,8 +14,9 @@ export const styles = StyleSheet.create({
   info: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginBottom: 20,
+    gap: 15
   },
   row: {
     flexDirection: 'row',
@@ -23,33 +24,32 @@ export const styles = StyleSheet.create({
   },
   tasksCreated: {
     color: themes.blue,
-    fontSize: themes.md,
-    fontFamily: themes.bold,
+    fontSize: themes.sm,
+    textTransform: 'uppercase',
   },
   tasksDone: {
     color: themes.purple,
-    fontSize: themes.md,
-    fontFamily: themes.bold,
+    fontSize: themes.sm,
+    textTransform: 'uppercase',
   },
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 2,
-    borderRadius: 5,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
     width: 175,
-    height: 45
+    height: 45,
+    backgroundColor: '#202024',
+    borderRadius: 5,
   },
   buttonText: {
     fontSize: themes.md,
-    fontFamily: themes.bold,
   },
   buttonBlue: {
     borderColor: themes.blue,
+    borderWidth: 2,
   },
   buttonPurple: {
     borderColor: themes.purple,
+    borderWidth: 2,
   },
   buttonBlueDark: {
     borderColor: themes.blueDark,
@@ -59,9 +59,11 @@ export const styles = StyleSheet.create({
   },
   buttonTextBlue: {
     color: themes.blue,
+    fontFamily: themes.bold,
   },
   buttonTextPurple: {
     color: themes.purple,
+    fontFamily: themes.bold,
   },
   buttonTextBlueDark: {
     color: themes.blueDark,
