@@ -41,6 +41,9 @@ export function TaskModal({ isVisible, onClose, task, onSave }: TaskModalProps) 
     onClose();
   };
 
+  const { height } = Dimensions.get('window');
+  const modalHeight = Math.min(height * 0.75, 700);
+
   return (
     <Modal
       visible={isVisible}
