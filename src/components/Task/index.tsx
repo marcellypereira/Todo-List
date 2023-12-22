@@ -19,8 +19,6 @@ export function Task({ id, title, isCompleted, onRemove, onTaskCheck, onEdit }: 
   const [editedTitle, setEditedTitle] = useState(title); 
   
   const handleSave = (newTitle: string) => {
-    console.log('Novo título:', newTitle);
-
     if (onEdit) {
       onEdit();
     }
@@ -28,7 +26,7 @@ export function Task({ id, title, isCompleted, onRemove, onTaskCheck, onEdit }: 
     setEditedTitle(newTitle);
   };
 
-  const canEdit = !isCompleted; 
+  const canEdit = true; 
 
   return (
     <TouchableOpacity onPress={() => canEdit && setModalVisible(true)}>
@@ -51,11 +49,10 @@ export function Task({ id, title, isCompleted, onRemove, onTaskCheck, onEdit }: 
         </TouchableOpacity>
 
         <TaskModal 
-          isVisible={modalVisible && canEdit} 
-          onClose={() => setModalVisible(false)} 
+          isVisible={modalVisible && canEdit}
+          onClose={() => setModalVisible(false)}
           task={{ id, title: editedTitle, isCompleted }}
-          onSave={handleSave} 
-          
+          onSave={handleSave} isCompleted={false}          
         />
       </View>
     </TouchableOpacity>
