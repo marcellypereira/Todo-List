@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     color: '#7C7C8A',
   },
   iconEdit: {
-    fill: '#7C7C8A',
+    fill: '#36343B',
     marginRight: -5,
   },  
   taskTitle:{
