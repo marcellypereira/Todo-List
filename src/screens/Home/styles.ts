@@ -36,11 +36,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: 155,
-<<<<<<< HEAD
     height: 35,
-=======
-    height: 45,
->>>>>>> 0876eda46237e4f19b0f304b1a5d904113e19fcc
     backgroundColor: '#202024',
     borderRadius: 5,
   },
