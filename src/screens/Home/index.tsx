@@ -7,6 +7,7 @@ import { Task, TaskProps } from "../../components/Task";
 import { uuidv4, handleBlurWithKeyboard } from "../../utils";
 import { styles } from "./styles";
 import * as TaskUtils from "../../utils/taskUtils";
+import { TaskModal } from "../../components/Modal";
 
 const STORAGE_KEY = 'tasks';
 
@@ -15,6 +16,7 @@ function Home() {
   const [newTask, setNewTask] = useState('');
   const [activeFilter, setActiveFilter] = useState('Criadas');
   const [editingTask, setEditingTask] = useState<TaskProps | null>(null);
+  const [isModalVisible, setIsModalVisible] = useState(false); 
 
   useEffect(() => {
     const loadTasks = async () => {
@@ -125,6 +127,16 @@ function Home() {
             />
           </View>
         </View>
+
+        <TaskModal
+          isVisible={isModalVisible}
+          onClose={() => setIsModalVisible(false)}
+          task={editingTask || { id: '', title: '', isCompleted: false }}
+          onSave={(newTitle) => {
+            TaskUtils.handleUpdateTask(editingTask, newTitle, tasks, setTasks, setEditingTask, setNewTask, saveTasksToStorage);
+            setIsModalVisible(false);
+          }}
+        />
       </View>
     </TouchableWithoutFeedback>
   );
