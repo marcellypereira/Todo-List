@@ -6,7 +6,7 @@ import { Header } from "../../components/Header";
 import { Task, TaskProps } from "../../components/Task";
 import { handleBlurWithKeyboard } from "../../utils";
 import { styles } from "./styles";
-import * as TaskUtils from "../../utils/taskUtils";
+import * as TaskController from "../../controllers/Task";
 import { TaskModal } from "../../components/Modal";
 
 const STORAGE_KEY = 'tasks';
@@ -34,23 +34,23 @@ function Home() {
   }, []);
 
   const handleTaskAdd = () => {
-    TaskUtils.handleTaskAdd(newTask, tasks, setTasks, setNewTask, saveTasksToStorage);
+    TaskController.handleTaskAdd(newTask, tasks, setTasks, setNewTask, saveTasksToStorage);
   };
 
   const handleRemoveTask = (id: string) => {
-    TaskUtils.handleRemoveTask(id, tasks, setTasks, saveTasksToStorage);
+    TaskController.handleRemoveTask(id, tasks, setTasks, saveTasksToStorage);
   };
 
   const handleTaskDone = (id: string) => {
-    TaskUtils.handleTaskDone(id, tasks, setTasks, saveTasksToStorage);
+    TaskController.handleTaskDone(id, tasks, setTasks, saveTasksToStorage);
   };
 
   const handleEditTask = (id: string) => {
-    TaskUtils.handleEditTask(id, tasks, setEditingTask, setNewTask);
+    TaskController.handleEditTask(id, tasks, setEditingTask, setNewTask);
   };
 
   const handleUpdateTask = () => {
-    TaskUtils.handleUpdateTask(editingTask, newTask, tasks, setTasks, setEditingTask, setNewTask, saveTasksToStorage);
+    TaskController.handleUpdateTask(editingTask, newTask, tasks, setTasks, setEditingTask, setNewTask, saveTasksToStorage);
   };
 
   const saveTasksToStorage = async (tasksToSave: any) => {
@@ -133,7 +133,7 @@ function Home() {
           onClose={() => setIsModalVisible(false)}
           task={editingTask || { id: '', title: '', isCompleted: false }}
           onSave={(newTitle) => {
-            TaskUtils.handleUpdateTask(editingTask, newTitle, tasks, setTasks, setEditingTask, setNewTask, saveTasksToStorage);
+            TaskController.handleUpdateTask(editingTask, newTitle, tasks, setTasks, setEditingTask, setNewTask, saveTasksToStorage);
             setIsModalVisible(false);
           }}
         />
