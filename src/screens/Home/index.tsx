@@ -16,7 +16,8 @@ function Home() {
   const [newTask, setNewTask] = useState('');
   const [activeFilter, setActiveFilter] = useState('Criadas');
   const [editingTask, setEditingTask] = useState<TaskProps | null>(null);
-  const [isModalVisible, setIsModalVisible] = useState(false); 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     const loadTasks = async () => {
@@ -46,14 +47,19 @@ function Home() {
   };
 
   const handleEditTask = (id: string) => {
-    TaskController.handleEditTask(id, tasks, setEditingTask, setNewTask);
+    const taskToEdit = tasks.find((task) => task.id === id);
+    if (taskToEdit) {
+      setEditingTask(taskToEdit);
+      setIsCompleted(taskToEdit.isCompleted);
+      setNewTask('');
+    }
   };
 
   const handleUpdateTask = () => {
     TaskController.handleUpdateTask(editingTask, newTask, tasks, setTasks, setEditingTask, setNewTask, saveTasksToStorage);
   };
 
-  const saveTasksToStorage = async (tasksToSave: any) => {
+  const saveTasksToStorage = async (tasksToSave: TaskProps[]) => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(tasksToSave));
     } catch (error) {
@@ -136,6 +142,7 @@ function Home() {
             TaskController.handleUpdateTask(editingTask, newTitle, tasks, setTasks, setEditingTask, setNewTask, saveTasksToStorage);
             setIsModalVisible(false);
           }}
+          isCompleted={isCompleted}
         />
       </View>
     </TouchableWithoutFeedback>

@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     backgroundColor: themes.gray700,
   },
   form: {
-    width: '100%',
+    width: '80%',
     height: 54,
     position: 'absolute',
     bottom: -54 / 2,
@@ -31,6 +31,8 @@ export const styles = StyleSheet.create({
     fontSize: themes.md,
     color: themes.gray100,
     backgroundColor: themes.gray500,
+    flex: 1,
+    paddingRight: 40
   },
   buttonInput: {
     width: 54,
@@ -39,5 +41,16 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 5,
     backgroundColor: themes.blueDark,
+  },
+  uploadButton: {
+    position: 'absolute', 
+    top: '55%', 
+    right: 90, 
+  },
+  upload:{
+    fill: themes.gray200,
+    transform: [{ translateY: -12 }],
+    marginLeft: 10,
+    paddingLeft: 10
   },
 });

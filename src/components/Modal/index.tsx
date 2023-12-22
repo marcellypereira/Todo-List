@@ -3,7 +3,7 @@ import { Modal, View, Text, TouchableOpacity, Animated, Image, TextInput, Keyboa
 import { styles } from './styles';
 import ClipboardIcon from '../../assets/clipboardIcon.png';
 import EditIcon from '../../assets/edit.svg';
-import CloseIcon from '../../assets/close.svg'; 
+import CloseIcon from '../../assets/close.svg';
 import ImageIcon from '../../assets/image.svg';
 import ImageUpload from '../../assets/imageUpload.svg';
 
@@ -16,9 +16,10 @@ type TaskModalProps = {
     isCompleted: boolean;
   };
   onSave: (newTitle: string) => void;
+  isCompleted: boolean;
 };
 
-export function TaskModal({ isVisible, onClose, task, onSave }: TaskModalProps) {
+export function TaskModal({ isVisible, onClose, task, onSave, isCompleted }: TaskModalProps) {
   const opacity = useRef(new Animated.Value(0)).current;
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
@@ -52,62 +53,62 @@ export function TaskModal({ isVisible, onClose, task, onSave }: TaskModalProps) 
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
-      <ScrollView  showsVerticalScrollIndicator={false}>
-      <Animated.View style={[styles.modalContainer, { opacity, height: modalHeight }]}>
-          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-            <CloseIcon style={styles.closeIcon} />
-          </TouchableOpacity>
-          <View style={styles.taskContainer}>
-            <ScrollView>
-              <View style={styles.task}>
-                <View style={styles.titleContainer}>
-                  <Image source={ClipboardIcon} style={styles.clipboard} />
-                  <Text style={styles.textTarefas}>Tarefa</Text>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Animated.View style={[styles.modalContainer, { opacity, height: modalHeight }]}>
+            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+              <CloseIcon style={styles.closeIcon} />
+            </TouchableOpacity>
+            <View style={styles.taskContainer}>
+              <ScrollView>
+                <View style={styles.task}>
+                  <View style={styles.titleContainer}>
+                    <Image source={ClipboardIcon} style={styles.clipboard} />
+                    <Text style={styles.textTarefas}>Tarefa</Text>
+                  </View>
+
+                  <TouchableOpacity onPress={handleEditClick}>
+                    <EditIcon style={styles.iconEdit} />
+                  </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity onPress={handleEditClick}>
-                  <EditIcon style={styles.iconEdit} />
-                </TouchableOpacity>
-              </View>
+                {isEditing ? (
+                  <TextInput
+                    style={styles.taskTitleInput}
+                    value={editedTitle}
+                    onChangeText={(text) => setEditedTitle(text)}
+                    autoFocus
+                    onBlur={Keyboard.dismiss}
+                    editable={!isCompleted}
+                  />
+                ) : (
+                  <Text style={styles.taskTitle}>{task.title}</Text>
+                )}
+              </ScrollView>
+            </View>
 
-              {isEditing ? (
-                <TextInput
-                  style={styles.taskTitleInput}
-                  value={editedTitle}
-                  onChangeText={(text) => setEditedTitle(text)}
-                  autoFocus
-                  onBlur={Keyboard.dismiss}
-                />
-              ) : (
-                <Text style={styles.taskTitle}>{task.title}</Text>
-              )}
-            </ScrollView>
-          </View>
+            <View style={styles.taskContainer}>
+              <ScrollView>
+                <View style={styles.task}>
+                  <View style={styles.titleContainer}>
+                    <ImageIcon style={styles.ImageIcon} />
+                    <Text style={styles.textTarefas}>Imagem</Text>
+                  </View>
 
-          <View style={styles.taskContainer}>
-            <ScrollView>
-              <View style={styles.task}>
-                <View style={styles.titleContainer}>
-                  <ImageIcon style={styles.ImageIcon} />
-                  <Text style={styles.textTarefas}>Imagem</Text>
+                  <TouchableOpacity>
+                    <EditIcon style={styles.iconEdit} />
+                  </TouchableOpacity>
                 </View>
-
                 <TouchableOpacity>
-                  <EditIcon style={styles.iconEdit} />
+                  <ImageUpload style={styles.ImageUpload} />
                 </TouchableOpacity>
-              </View>
-              <TouchableOpacity>
-                <ImageUpload style={styles.ImageUpload} />
-              </TouchableOpacity>
-            </ScrollView>
-          </View>
+              </ScrollView>
+            </View>
 
-          <TouchableOpacity onPress={handleSave} style={styles.saveButton}>
-            <Text style={styles.textButton}>Salvar</Text>
-          </TouchableOpacity>
-        </Animated.View>
-      </ScrollView>
-       
+            <TouchableOpacity onPress={handleSave} style={styles.saveButton}>
+              <Text style={styles.textButton}>Salvar</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        </ScrollView>
       </View>
     </Modal>
   );

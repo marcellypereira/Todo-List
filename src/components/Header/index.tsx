@@ -5,6 +5,7 @@ import { themes } from '../../themes';
 import Logo from '../../assets/todo.svg';
 import PlusIcon from '../../assets/plus.svg';
 import Upload from '../Upload';
+import ImageIcon from '../../assets/image.svg';
 
 interface HeaderProps {
   task: string;
@@ -26,18 +27,22 @@ export function Header({ task, onChangeText, onPress }: HeaderProps) {
   return (
     <View style={styles.container}>
       <Logo />
-
       <View style={styles.form}>
         <TextInput
           style={[styles.input, { borderColor: isFocused ? themes.purple : themes.gray700 }]}
-          placeholder="Adicione aqui uma nova tarefa"
+          placeholder="Descrição da tarefa ..."
           placeholderTextColor="#4F4F4F"
           onFocus={handleFocus}
           onBlur={handleBlur}
           value={task}
           onChangeText={onChangeText}
         />
-        <Upload />
+          <TouchableOpacity style={styles.uploadButton}>
+          <View>
+          <ImageIcon style={styles.upload} />
+
+          </View>
+          </TouchableOpacity>
         <TouchableOpacity
           style={styles.buttonInput}
           onPress={onPress}
