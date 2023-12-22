@@ -47,20 +47,9 @@ function Home() {
     TaskUtils.handleEditTask(id, tasks, setEditingTask, setNewTask);
   };
 
-const handleUpdateTask = () => {
-    TaskUtils.handleUpdateTask(
-      editingTask,
-      newTask,
-      tasks,
-      setTasks,
-      setEditingTask,
-      setNewTask,
-      saveTasksToStorage
-    );
-
-    setNewTask('');
+  const handleUpdateTask = () => {
+    TaskUtils.handleUpdateTask(editingTask, newTask, tasks, setTasks, setEditingTask, setNewTask, saveTasksToStorage);
   };
-
 
   const saveTasksToStorage = async (tasksToSave: any) => {
     try {

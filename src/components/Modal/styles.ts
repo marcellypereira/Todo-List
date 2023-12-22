@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
     padding: 20,
     margin: 20,
     marginTop: 50,
+    borderRadius: 5
   },
   task:{
     flexDirection: 'row',

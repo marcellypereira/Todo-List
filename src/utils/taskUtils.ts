@@ -65,23 +65,28 @@ export const handleEditTask = (id: string, tasks: any[], setEditingTask: { (valu
   };
   
 
-export const handleUpdateTask = (editingTask: TaskProps | null, newTask: string, tasks: any[], setTasks: { (value: SetStateAction<TaskProps[]>): void; (arg0: any): void; }, setEditingTask: { (value: SetStateAction<TaskProps | null>): void; (arg0: (prevEditingTask: any) => any): void; }, setNewTask: { (value: SetStateAction<string>): void; (arg0: string): void; }, saveTasksToStorage: { (tasksToSave: any): Promise<void>; (arg0: any): void; }) => {
+  export const handleUpdateTask = async (
+    editingTask: TaskProps | null,
+    newTask: string,
+    tasks: any[],
+    setTasks: { (value: SetStateAction<TaskProps[]>): void; (arg0: any): void; },
+    setEditingTask: { (value: SetStateAction<TaskProps | null>): void; (arg0: (prevEditingTask: any) => any): void; },
+    setNewTask: { (value: SetStateAction<string>): void; (arg0: string): void; },
+    saveTasksToStorage: { (tasksToSave: any): Promise<void>; (arg0: any): void; }
+  ) => {
     if (editingTask) {
       const updatedTasks = tasks.map((task) =>
         task.id === editingTask.id ? { ...task, title: newTask } : task
       );
   
-      setTasks(updatedTasks);
-      saveTasksToStorage(updatedTasks);
-  
-      setEditingTask((prevEditingTask) => {
-        if (prevEditingTask) {
-          return { ...prevEditingTask, title: newTask };
-        }
-        return null;
-      });
-  
-      setNewTask('');
+      try {
+        await saveTasksToStorage(updatedTasks);
+        setTasks(updatedTasks);
+        setEditingTask(null);
+        setNewTask('');
+      } catch (error) {
+        console.error('Erro ao salvar as tarefas no AsyncStorage:', error);
+      }
     }
   };
   
