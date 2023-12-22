@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   tasksContainer: {
     flex: 1,
     marginTop: 55,
-    marginHorizontal: 24,
+    marginHorizontal: 30,
   },
   info: {
     flexDirection: 'row',
@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 175,
+    width: 155,
     height: 45,
     backgroundColor: '#202024',
     borderRadius: 5,

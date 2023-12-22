@@ -39,11 +39,6 @@ export function TaskModal({ isVisible, onClose, task, onSave }: TaskModalProps) 
     onClose();
   };
 
-  const handleCancel = () => {
-    setIsEditing(false);
-    onClose();
-  };
-
   return (
     <Modal
       visible={isVisible}
