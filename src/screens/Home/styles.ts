@@ -5,11 +5,13 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: themes.gray600,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   tasksContainer: {
     flex: 1,
     marginTop: 55,
-    marginHorizontal: 43,
+    width: 327,
   },
   info: {
     flexDirection: 'row',

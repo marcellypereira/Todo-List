@@ -39,7 +39,6 @@ allprojects {
     }
 
         dependencies {
-        implementation project(':@react-native-mmkv_mmkv')
     }
 
 }
