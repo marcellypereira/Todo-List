@@ -1,5 +1,6 @@
 export const themes = {
     // Base
+    gray800: '#202024',
     gray700: '#0D0D0D',
     gray600: '#1A1A1A',
     gray500: '#262626',

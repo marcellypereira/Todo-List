@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     backgroundColor: themes.gray700,
   },
   form: {
-    width: '80%',
+    width: '85%',
     height: 54,
     position: 'absolute',
     bottom: -54 / 2,

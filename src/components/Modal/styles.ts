@@ -9,20 +9,18 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: themes.gray600,
     width: 350,
-    height: '75%',
-    marginTop: 120
+    height: 589,
+    padding: 23,
+    gap: 20,
   },
   closeButton: {
-    marginTop: 10,
     alignSelf: 'flex-end',
   },
   taskContainer: {
-    backgroundColor: '#202024',
-    padding: 20,
-    margin: 20,
-    marginTop: 20,
+    backgroundColor: themes.gray800,
+    padding: 10,
     borderRadius: 5
   },
   task:{
@@ -31,19 +29,19 @@ export const styles = StyleSheet.create({
   },
   titleContainer: {
     flexDirection: 'row',
-    gap: 10,
+    gap: 12,
     alignItems: 'center',
 
   },
   clipboard: {
     width: 20,
     height: 20,
-    tintColor: '#7C7C8A',
+    tintColor: themes.gray300,
   },
   ImageIcon:{
     width: 20,
     height: 20,
-    fill: '#7C7C8A',
+    fill: themes.gray300,
   },
   ImageUpload:{
     justifyContent: 'center',
@@ -51,30 +49,31 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     margin: 20
   },
-  textTarefas: {
+  textTasks: {
     fontSize: themes.lg,
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#7C7C8A',
+    color: themes.gray300,
   },
   iconEdit: {
-    fill: '#36343B',
+    fill: themes.gray300,
     marginRight: -5,
   },  
   taskTitle:{
     marginTop: 20,
-    color: 'white', 
+    color: themes.gray300,
   },
   taskTitleInput: {
     marginTop: 20,
-    color: 'white', 
+    marginLeft: 5,
+    color: themes.gray100,
   },
   closeIcon:{
     marginRight: 10,
-    fill: '#525252',
+    fill: themes.gray300,
   },
   saveButton:{
-    backgroundColor: '#202024',
+    backgroundColor: themes.gray800,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',

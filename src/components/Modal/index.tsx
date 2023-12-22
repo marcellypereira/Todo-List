@@ -42,9 +42,6 @@ export function TaskModal({ isVisible, onClose, task, onSave, isCompleted }: Tas
     onClose();
   };
 
-  const { height } = Dimensions.get('window');
-  const modalHeight = Math.min(height * 0.75, 700);
-
   return (
     <Modal
       visible={isVisible}
@@ -53,8 +50,7 @@ export function TaskModal({ isVisible, onClose, task, onSave, isCompleted }: Tas
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Animated.View style={[styles.modalContainer, { opacity, height: modalHeight }]}>
+          <Animated.View style={[styles.modalContainer, { opacity, transform: [{ scale: opacity }] }]}>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
               <CloseIcon style={styles.closeIcon} />
             </TouchableOpacity>
@@ -63,7 +59,7 @@ export function TaskModal({ isVisible, onClose, task, onSave, isCompleted }: Tas
                 <View style={styles.task}>
                   <View style={styles.titleContainer}>
                     <Image source={ClipboardIcon} style={styles.clipboard} />
-                    <Text style={styles.textTarefas}>Tarefa</Text>
+                    <Text style={styles.textTasks}>Tarefa</Text>
                   </View>
 
                   <TouchableOpacity onPress={handleEditClick}>
@@ -84,14 +80,14 @@ export function TaskModal({ isVisible, onClose, task, onSave, isCompleted }: Tas
                   <Text style={styles.taskTitle}>{task.title}</Text>
                 )}
               </ScrollView>
-            </View>
+            </View> 
 
             <View style={styles.taskContainer}>
               <ScrollView>
                 <View style={styles.task}>
                   <View style={styles.titleContainer}>
                     <ImageIcon style={styles.ImageIcon} />
-                    <Text style={styles.textTarefas}>Imagem</Text>
+                    <Text style={styles.textTasks}>Imagem</Text>
                   </View>
 
                   <TouchableOpacity>
@@ -106,7 +102,6 @@ export function TaskModal({ isVisible, onClose, task, onSave, isCompleted }: Tas
               <Text style={styles.textButton}>Salvar</Text>
             </TouchableOpacity>
           </Animated.View>
-        </ScrollView>
       </View>
     </Modal>
   );
