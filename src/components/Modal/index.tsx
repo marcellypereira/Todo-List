@@ -98,9 +98,7 @@ export function TaskModal({ isVisible, onClose, task, onSave, isCompleted }: Tas
                     <EditIcon style={styles.iconEdit} />
                   </TouchableOpacity>
                 </View>
-                <TouchableOpacity>
                   <ImageUpload style={styles.ImageUpload} />
-                </TouchableOpacity>
               </ScrollView>
             </View>
 
