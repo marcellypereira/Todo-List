@@ -5,7 +5,7 @@ import {
   Inter_400Regular,
   Inter_700Bold,
 } from '@expo-google-fonts/inter';
-import { Home } from './src/screens/Home';
+import  Home  from './src/screens/Home';
 import { Loading } from './src/components/Loading';
 
 export default function App() {

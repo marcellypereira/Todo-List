@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  TouchableWithoutFeedback,
-  FlatList,
-  Alert,
-} from "react-native";
+import { View, Text, TouchableWithoutFeedback, FlatList, Alert } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Empty } from "../../components/Empty";
 import { Header } from "../../components/Header";
 import { Task, TaskProps } from "../../components/Task";
 import { uuidv4, handleBlurWithKeyboard } from "../../utils";
 import { styles } from "./styles";
+import * as TaskUtils from "../../utils/taskUtils";
 
 const STORAGE_KEY = 'tasks';
 
-export function Home() {
+function Home() {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [newTask, setNewTask] = useState('');
   const [activeFilter, setActiveFilter] = useState('Criadas');
@@ -36,66 +31,38 @@ export function Home() {
     loadTasks();
   }, []);
 
-  function handleTaskAdd() {
-    if (newTask !== '' && newTask.length >= 5) {
-      const newTaskItem = { id: uuidv4(), title: newTask, isCompleted: false };
-      setTasks((prevTasks) => [newTaskItem, ...prevTasks]);
-      saveTasksToStorage([newTaskItem, ...tasks]);
-    } else {
-      Alert.alert("Ops!", "A tarefa deve ter pelo menos 5 caracteres.");
-    }
-    setNewTask('');
-  }
+  const handleTaskAdd = () => {
+    TaskUtils.handleTaskAdd(newTask, tasks, setTasks, setNewTask, saveTasksToStorage);
+  };
 
-  function handleRemoveTask(id: string) {
-    Alert.alert("Remover Tarefa", "Tem certeza que você deseja remover essa tarefa?", [
-      {
-        text: 'Sim',
-        onPress: () => {
-          setTasks((prevTasks) => {
-            const updatedTasks = prevTasks.filter((task) => task.id !== id);
-            saveTasksToStorage(updatedTasks);
-            return updatedTasks;
-          });
-        },
-        style: 'destructive',
-      },
-      {
-        text: 'Não',
-        style: 'cancel',
-      },
-    ]);
-  }
+  const handleRemoveTask = (id: string) => {
+    TaskUtils.handleRemoveTask(id, tasks, setTasks, saveTasksToStorage);
+  };
 
-  function handleTaskDone(id: string) {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
-      )
+  const handleTaskDone = (id: string) => {
+    TaskUtils.handleTaskDone(id, tasks, setTasks, saveTasksToStorage);
+  };
+
+  const handleEditTask = (id: string) => {
+    TaskUtils.handleEditTask(id, tasks, setEditingTask, setNewTask);
+  };
+
+const handleUpdateTask = () => {
+    TaskUtils.handleUpdateTask(
+      editingTask,
+      newTask,
+      tasks,
+      setTasks,
+      setEditingTask,
+      setNewTask,
+      saveTasksToStorage
     );
 
-    saveTasksToStorage(tasks.map((task) => (task.id === id ? { ...task, isCompleted: !task.isCompleted } : task)));
-  }
+    setNewTask('');
+  };
 
-  function handleEditTask(id: string) {
-    const taskToEdit = tasks.find((task) => task.id === id);
-    setEditingTask(taskToEdit || null);  
-    setNewTask(taskToEdit?.title || '');
-  }
 
-  function handleUpdateTask() {
-    if (editingTask) {
-      const updatedTasks = tasks.map((task) =>
-        task.id === editingTask.id ? { ...task, title: newTask } : task
-      );
-      setTasks(updatedTasks);
-      saveTasksToStorage(updatedTasks);
-      setEditingTask(null);
-      setNewTask('');
-    }
-  }
-
-  const saveTasksToStorage = async (tasksToSave: TaskProps[]) => {
+  const saveTasksToStorage = async (tasksToSave: any) => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(tasksToSave));
     } catch (error) {
@@ -108,21 +75,20 @@ export function Home() {
   return (
     <TouchableWithoutFeedback onPress={handleBlurWithKeyboard}>
       <View style={styles.container}>
-      <Header task={newTask} onChangeText={setNewTask} onPress={editingTask ? handleUpdateTask : handleTaskAdd} />
+        <Header task={newTask} onChangeText={setNewTask} onPress={editingTask ? handleUpdateTask : handleTaskAdd} />
         <View style={styles.tasksContainer}>
-        <View style={styles.containerAllTasks}>
-          <Text style={styles.allTasks}>
-            Todas
-          </Text>
-          <View style={styles.counterContainer}>
-            <Text style={styles.counterTasks}>
-              {tasks.length}
+          <View style={styles.containerAllTasks}>
+            <Text style={styles.allTasks}>
+              Todas
             </Text>
+            <View style={styles.counterContainer}>
+              <Text style={styles.counterTasks}>
+                {tasks.length}
+              </Text>
+            </View>
           </View>
-        </View>
-        
+
           <View style={styles.info}>
-        
             <TouchableWithoutFeedback onPress={() => setActiveFilter('Criadas')}>
               <View style={[
                 styles.row,
@@ -136,7 +102,6 @@ export function Home() {
                 ]}>Criadas</Text>
               </View>
             </TouchableWithoutFeedback>
-
 
             <TouchableWithoutFeedback onPress={() => setActiveFilter('Concluídas')}>
               <View style={[
@@ -154,24 +119,26 @@ export function Home() {
           </View>
 
           <View style={{ opacity: filteredTasks.length > 0 ? 1 : 0.5 }}>
-          <FlatList
-          data={filteredTasks}
-          keyExtractor={(task) => task.id!}
-          renderItem={({ item }) => (
-            <Task
-              key={item.id}
-              isCompleted={item.isCompleted}
-              title={item.title}
-              onRemove={() => handleRemoveTask(item.id!)}
-              onTaskCheck={() => handleTaskDone(item.id!)}
-              onEdit={() => !item.isCompleted && handleEditTask(item.id!)} 
+            <FlatList
+              data={filteredTasks}
+              keyExtractor={(task) => task.id!}
+              renderItem={({ item }) => (
+                <Task
+                  key={item.id}
+                  isCompleted={item.isCompleted}
+                  title={item.title}
+                  onRemove={() => handleRemoveTask(item.id!)}
+                  onTaskCheck={() => handleTaskDone(item.id!)}
+                  onEdit={() => handleEditTask(item.id!)}
+                />
+              )}
+              ListEmptyComponent={<Empty />}
             />
-          )}
-          ListEmptyComponent={<Empty />}
-        />
           </View>
         </View>
       </View>
     </TouchableWithoutFeedback>
   );
 }
+
+export default Home;
