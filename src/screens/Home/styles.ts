@@ -9,14 +9,14 @@ export const styles = StyleSheet.create({
   tasksContainer: {
     flex: 1,
     marginTop: 55,
-    marginHorizontal: 24,
+    marginHorizontal: 43,
   },
   info: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 20,
-    gap: 15
+    gap: 12
   },
   row: {
     flexDirection: 'row',
@@ -35,8 +35,8 @@ export const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 175,
-    height: 45,
+    width: 155,
+    height: 35,
     backgroundColor: '#202024',
     borderRadius: 5,
   },

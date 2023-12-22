@@ -63,7 +63,6 @@ export const handleEditTask = (id: string, tasks: any[], setEditingTask: { (valu
       setNewTask('');
     }
   };
-  
 
   export const handleUpdateTask = async (
     editingTask: TaskProps | null,

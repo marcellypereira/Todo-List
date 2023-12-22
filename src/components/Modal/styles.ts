@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     width: 350,
     height: '75%',
+    marginTop: 120
   },
   closeButton: {
     marginTop: 10,
@@ -21,7 +22,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#202024',
     padding: 20,
     margin: 20,
-    marginTop: 50,
+    marginTop: 20,
     borderRadius: 5
   },
   task:{
@@ -38,6 +39,17 @@ export const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: '#7C7C8A',
+  },
+  ImageIcon:{
+    width: 20,
+    height: 20,
+    fill: '#7C7C8A',
+  },
+  ImageUpload:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    margin: 20
   },
   textTarefas: {
     fontSize: themes.lg,

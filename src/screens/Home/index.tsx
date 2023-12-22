@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableWithoutFeedback, FlatList, Alert } from "react-native";
+import { View, Text, TouchableWithoutFeedback, FlatList } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Empty } from "../../components/Empty";
 import { Header } from "../../components/Header";
 import { Task, TaskProps } from "../../components/Task";
-import { uuidv4, handleBlurWithKeyboard } from "../../utils";
+import { handleBlurWithKeyboard } from "../../utils";
 import { styles } from "./styles";
 import * as TaskUtils from "../../utils/taskUtils";
 import { TaskModal } from "../../components/Modal";
@@ -61,7 +61,7 @@ function Home() {
     }
   };
 
-  const filteredTasks = activeFilter === 'Criadas' ? tasks : tasks.filter((task) => task.isCompleted);
+  const filteredTasks = activeFilter === 'Criadas' ? tasks.filter((task) => !task.isCompleted) : tasks.filter((task) => task.isCompleted);
 
   return (
     <TouchableWithoutFeedback onPress={handleBlurWithKeyboard}>
@@ -109,7 +109,7 @@ function Home() {
             </TouchableWithoutFeedback>
           </View>
 
-          <View style={{ opacity: filteredTasks.length > 0 ? 1 : 0.5 }}>
+          <View style={{ opacity: filteredTasks.length > 0 ? 1 : 0.5, marginBottom: '40%' }}>
             <FlatList
               data={filteredTasks}
               keyExtractor={(task) => task.id!}

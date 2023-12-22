@@ -1,9 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Modal, View, Text, TouchableOpacity, Animated, Image, TextInput, Keyboard } from 'react-native';
+import { Modal, View, Text, TouchableOpacity, Animated, Image, TextInput, Keyboard, ScrollView, Dimensions } from 'react-native';
 import { styles } from './styles';
 import ClipboardIcon from '../../assets/clipboardIcon.png';
 import EditIcon from '../../assets/edit.svg';
 import CloseIcon from '../../assets/close.svg'; 
+import ImageIcon from '../../assets/image.svg';
+import ImageUpload from '../../assets/imageUpload.svg';
 
 type TaskModalProps = {
   isVisible: boolean;
@@ -44,6 +46,9 @@ export function TaskModal({ isVisible, onClose, task, onSave }: TaskModalProps) 
     onClose();
   };
 
+  const { height } = Dimensions.get('window');
+  const modalHeight = Math.min(height * 0.75, 700);
+
   return (
     <Modal
       visible={isVisible}
@@ -52,39 +57,62 @@ export function TaskModal({ isVisible, onClose, task, onSave }: TaskModalProps) 
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
-        <Animated.View style={[styles.modalContainer, { opacity }]}>
+      <ScrollView  showsVerticalScrollIndicator={false}>
+      <Animated.View style={[styles.modalContainer, { opacity, height: modalHeight }]}>
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <CloseIcon style={styles.closeIcon} />
           </TouchableOpacity>
           <View style={styles.taskContainer}>
-            <View style={styles.task}>
-              <View style={styles.titleContainer}>
-                <Image source={ClipboardIcon} style={styles.clipboard} />
-                <Text style={styles.textTarefas}>Tarefa</Text>
+            <ScrollView>
+              <View style={styles.task}>
+                <View style={styles.titleContainer}>
+                  <Image source={ClipboardIcon} style={styles.clipboard} />
+                  <Text style={styles.textTarefas}>Tarefa</Text>
+                </View>
+
+                <TouchableOpacity onPress={handleEditClick}>
+                  <EditIcon style={styles.iconEdit} />
+                </TouchableOpacity>
               </View>
 
-              <TouchableOpacity onPress={handleEditClick}>
-                <EditIcon style={styles.iconEdit} />
-              </TouchableOpacity>
-            </View>
-
-            {isEditing ? (
-              <TextInput
-                style={styles.taskTitleInput}
-                value={editedTitle}
-                onChangeText={(text) => setEditedTitle(text)}
-                autoFocus
-                onBlur={Keyboard.dismiss}
-              />
-            ) : (
-              <Text style={styles.taskTitle}>{task.title}</Text>
-            )}           
-
+              {isEditing ? (
+                <TextInput
+                  style={styles.taskTitleInput}
+                  value={editedTitle}
+                  onChangeText={(text) => setEditedTitle(text)}
+                  autoFocus
+                  onBlur={Keyboard.dismiss}
+                />
+              ) : (
+                <Text style={styles.taskTitle}>{task.title}</Text>
+              )}
+            </ScrollView>
           </View>
+
+          <View style={styles.taskContainer}>
+            <ScrollView>
+              <View style={styles.task}>
+                <View style={styles.titleContainer}>
+                  <ImageIcon style={styles.ImageIcon} />
+                  <Text style={styles.textTarefas}>Imagem</Text>
+                </View>
+
+                <TouchableOpacity>
+                  <EditIcon style={styles.iconEdit} />
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity>
+                <ImageUpload style={styles.ImageUpload} />
+              </TouchableOpacity>
+            </ScrollView>
+          </View>
+
           <TouchableOpacity onPress={handleSave} style={styles.saveButton}>
-              <Text style={styles.textButton}>Salvar</Text>
-            </TouchableOpacity>
+            <Text style={styles.textButton}>Salvar</Text>
+          </TouchableOpacity>
         </Animated.View>
+      </ScrollView>
+       
       </View>
     </Modal>
   );

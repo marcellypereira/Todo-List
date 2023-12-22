@@ -19,10 +19,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 20
   },
   input: {
     height: 54,
-    width: '75%',
+    width: 251,
     marginRight: 4,
     padding: 16,
     borderRadius: 5,
