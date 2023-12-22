@@ -1,4 +1,4 @@
-package com.marcellyp.todolist;
+package com.pierguinzani.todolist;
 
 import android.os.Build;
 import android.os.Bundle;

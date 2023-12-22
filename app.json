@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.marcellyp.todolist"
+      "package": "com.pierguinzani.todolist"
     },
     "web": {
       "favicon": "./assets/favicon.png"

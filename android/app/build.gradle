@@ -81,9 +81,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.marcellyp.todolist'
+    namespace 'com.pierguinzani.todolist'
     defaultConfig {
-        applicationId 'com.marcellyp.todolist'
+        applicationId 'com.pierguinzani.todolist'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
