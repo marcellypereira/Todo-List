@@ -4,9 +4,10 @@
  <div align="center">
   <table>
     <tr>
-      <td><img src="https://cdn.discordapp.com/attachments/1063226213092569251/1186284631016886364/Screenshot_20231218-085453_Expo_Go.jpg?ex=6592b0a8&is=65803ba8&hm=da80578eb0424db7e4112f1a8a4e9b6a0ac6c120c41af221235c77ac4df72923&" alt="Logo" /></td>
-      <td><img src="https://cdn.discordapp.com/attachments/1063226213092569251/1186284630316425296/Screenshot_20231218-085435_Expo_Go.jpg?ex=6592b0a7&is=65803ba7&hm=994997b7a58dba7646a0892ee70f8e52bf3469c0f6d07c1e392fda7773d2f09a&" alt="Logo" /></td>
-      <td><img src="https://cdn.discordapp.com/attachments/1063226213092569251/1186284630740041738/Screenshot_20231218-085444_Expo_Go.jpg?ex=6592b0a8&is=65803ba8&hm=232ec412bbf54a3239b018a189df552bd95494e6cbe36723b4281995bce26f9c&" alt="Logo" /></td>
+      <td><img src="https://cdn.discordapp.com/attachments/1108209235877187597/1192151656826150952/image1.png?ex=65a808c0&is=659593c0&hm=8d7f13b9962d929335d58cc3231dcaac39ff70577101f3af7086b4044d0491a5&" alt="Logo" /></td>
+      <td><img src="https://cdn.discordapp.com/attachments/1108209235877187597/1192151777563390013/image2.png?ex=65a808dc&is=659593dc&hm=cba3e9204328c66be42509f4ce3b56427b057a67a9cafb253d603dc6da34f0e4&" alt="Logo" /></td>
+      <td><img src="https://cdn.discordapp.com/attachments/1108209235877187597/1192151786073636864/image3.png?ex=65a808de&is=659593de&hm=bd614d12049713febb36c6d69994e8fa1d086187a04fb3632fb6c96a76230e16&" alt="Logo" /></td>
+      <td><img src="https://private-user-images.githubusercontent.com/49373874/292597256-a8a93a2d-d1f3-4721-9ff7-4e508a2c491e.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQzMDIwMjYsIm5iZiI6MTcwNDMwMTcyNiwicGF0aCI6Ii80OTM3Mzg3NC8yOTI1OTcyNTYtYThhOTNhMmQtZDFmMy00NzIxLTlmZjctNGU1MDhhMmM0OTFlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTAzVDE3MDg0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVlZTg5MGU2YzVkMzMyOTc1ZDVhOTQyZGU1YmQxMzgyZjY4ZGU5YjY3ZGQ1Y2IyYjE1NDQ3Y2Q3MjE1YjMxODUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.YjoO5TO8N3TnydbhdsVE_GYdfnH_o2_yhZWFOBv53Fs" alt="Logo" /></td>
  </tr>
   </table>
 </div>
@@ -50,10 +51,10 @@ Este projeto utiliza [Node.js](https://nodejs.org/en/) e [Npm](https://www.npmjs
 * Se você não tem o git na sua máquina, você pode instalá-lo [aqui](https://git-scm.com/downloads).
 ```bash
 
-$ git clone https://github.com/pierguinzani/todo-list.git
+$ git clone https://github.com/marcellypereira/Todo-List.git
 
-# Entre na pasta `todo-list`:
-$ cd todo-list
+# Entre na pasta `TODO-LIST`:
+$ cd TODO-LIST
 
 # Rode o projeto
 $ npx expo start
@@ -64,4 +65,4 @@ $ npx expo start
 
 
 
-<p align="center">Desenvolvido por Pier Guinzani 💜</p>
+<p align="center">Desenvolvido por Marcelly Pereira 💜</p>
