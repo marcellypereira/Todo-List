@@ -115,7 +115,7 @@ function Home() {
             </TouchableWithoutFeedback>
           </View>
 
-          <View style={{ opacity: filteredTasks.length > 0 ? 1 : 0.5, marginBottom: '40%' }}>
+          <View style={{ opacity: filteredTasks.length > 0 ? 1 : 0.5, marginBottom: '40%', marginLeft: '0.4%', marginRight: '0.4%' }}>
             <FlatList
               data={filteredTasks}
               keyExtractor={(task) => task.id!}

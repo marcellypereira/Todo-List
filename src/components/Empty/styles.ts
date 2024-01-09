@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     paddingVertical: 48,
-    paddingHorizontal: 20,
     borderTopColor: themes.gray400,
     borderTopWidth: 1,
   },

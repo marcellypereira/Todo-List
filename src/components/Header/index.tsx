@@ -4,7 +4,6 @@ import { styles } from './styles';
 import { themes } from '../../themes';
 import Logo from '../../assets/todo.svg';
 import PlusIcon from '../../assets/plus.svg';
-import Upload from '../Upload';
 import ImageIcon from '../../assets/image.svg';
 
 interface HeaderProps {
@@ -39,8 +38,7 @@ export function Header({ task, onChangeText, onPress }: HeaderProps) {
         />
           <TouchableOpacity style={styles.uploadButton}>
           <View>
-          <ImageIcon style={styles.upload} />
-
+            <ImageIcon style={styles.upload} />
           </View>
           </TouchableOpacity>
         <TouchableOpacity

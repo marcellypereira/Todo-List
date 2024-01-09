@@ -75,7 +75,8 @@ export const styles = StyleSheet.create({
   },
   containerAllTasks:{
     flexDirection: 'row', 
-    gap: 10
+    gap: 10,
+    marginLeft: 2
   },
   allTasks:{
     fontFamily: themes.bold,
