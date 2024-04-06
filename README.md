@@ -4,10 +4,10 @@
  <div align="center">
   <table>
     <tr>
-      <td><img src="https://cdn.discordapp.com/attachments/1108209235877187597/1192151656826150952/image1.png?ex=65a808c0&is=659593c0&hm=8d7f13b9962d929335d58cc3231dcaac39ff70577101f3af7086b4044d0491a5&" alt="Logo" /></td>
-      <td><img src="https://cdn.discordapp.com/attachments/1108209235877187597/1192151777563390013/image2.png?ex=65a808dc&is=659593dc&hm=cba3e9204328c66be42509f4ce3b56427b057a67a9cafb253d603dc6da34f0e4&" alt="Logo" /></td>
-      <td><img src="https://cdn.discordapp.com/attachments/1108209235877187597/1192151786073636864/image3.png?ex=65a808de&is=659593de&hm=bd614d12049713febb36c6d69994e8fa1d086187a04fb3632fb6c96a76230e16&" alt="Logo" /></td>
-      <td><img src="https://cdn.discordapp.com/attachments/1108209235877187597/1195382466278600854/292597256-a8a93a2d-d1f3-4721-9ff7-4e508a2c491e.png?ex=65b3c9ad&is=65a154ad&hm=8951b620ed083a614066b6dec61b41cb73e9cb49aec49dbbb3ef4aba9aa667b5&" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Todo-List/assets/116754560/1e8c44e2-c996-4ac8-8bfb-09b920a578a6" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Todo-List/assets/116754560/fc54a2f2-c96b-4722-8dc3-b2e5e6a85038" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Todo-List/assets/116754560/2d534fd3-2c56-41cf-8733-917da4d1ce3b" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Todo-List/assets/116754560/8289fae7-7b1e-4e98-b051-5ac826646fdf" alt="Logo" /></td>
  </tr>
   </table>
 </div>
