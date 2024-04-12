@@ -54,4 +54,16 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     paddingLeft: 10
   },
+  uploadFilled:{
+    fill: themes.gray300,
+    transform: [{ translateY: -12 }],
+    marginLeft: 10,
+    paddingLeft: 10
+  },
+  loading:{
+    position: 'absolute', 
+    right: 4,
+    bottom: '50%',
+    top: '50%'
+  }
 });
